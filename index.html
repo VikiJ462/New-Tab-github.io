@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyhledávač</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, blue, purple);
+            font-family: Arial, sans-serif;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+        }
+        button:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search-box" placeholder="Zadejte hledaný výraz">
+        <select id="search-engine">
+            <option value="https://www.google.com/search?q=">Google</option>
+            <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+            <option value="https://www.ecosia.org/search?q=">Ecosia</option>
+            <option value="https://www.startpage.com/do/dsearch?query=">Startpage</option>
+            <option value="https://www.bing.com/search?q=">Bing</option>
+            <option value="https://search.seznam.cz/?q=">Seznam</option>
+            <option value="https://search.yahoo.com/search?p=">Yahoo</option>
+            <option value="https://yandex.com/search/?text=">Yandex</option>
+        </select>
+        <button onclick="search()">Hledat</button>
+    </div>
+
+    <script>
+        function search() {
+            const query = document.getElementById('search-box').value;
+            const engine = document.getElementById('search-engine').value;
+            if (query.trim() !== "") {
+                window.open(engine + encodeURIComponent(query), '_blank');
+            } else {
+                alert("Prosím, zadejte hledaný výraz.");
+            }
+        }
+    </script>
+</body>
+</html>
